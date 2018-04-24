@@ -28,56 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imageBox = new System.Windows.Forms.PictureBox();
             this.layoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.exportButton = new System.Windows.Forms.Button();
             this.importButton = new System.Windows.Forms.Button();
+            this.selectImage = new System.Windows.Forms.Button();
             this.methodBox = new System.Windows.Forms.ComboBox();
             this.methodLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.selectImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.layoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.zoomControl = new System.Windows.Forms.TrackBar();
+            this.zoomLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
             this.layoutPanel.SuspendLayout();
+            this.layoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomControl)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // imageBox
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.imageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(309, 290);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.imageBox.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.imageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imageBox.Location = new System.Drawing.Point(12, 12);
+            this.imageBox.Name = "imageBox";
+            this.imageBox.Size = new System.Drawing.Size(390, 319);
+            this.imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.imageBox.TabIndex = 0;
+            this.imageBox.TabStop = false;
             // 
             // layoutPanel
             // 
             this.layoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.layoutPanel.Controls.Add(this.button2);
+            this.layoutPanel.Controls.Add(this.exportButton);
             this.layoutPanel.Controls.Add(this.importButton);
+            this.layoutPanel.Controls.Add(this.selectImage);
             this.layoutPanel.Controls.Add(this.methodBox);
             this.layoutPanel.Controls.Add(this.methodLabel);
             this.layoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.layoutPanel.Location = new System.Drawing.Point(327, 12);
+            this.layoutPanel.Location = new System.Drawing.Point(408, 12);
             this.layoutPanel.Name = "layoutPanel";
-            this.layoutPanel.Size = new System.Drawing.Size(105, 290);
+            this.layoutPanel.Size = new System.Drawing.Size(105, 319);
             this.layoutPanel.TabIndex = 3;
             // 
-            // button2
+            // exportButton
             // 
-            this.button2.Location = new System.Drawing.Point(0, 267);
-            this.button2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Export";
-            this.button2.UseVisualStyleBackColor = true;
+            this.exportButton.Location = new System.Drawing.Point(0, 296);
+            this.exportButton.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(105, 23);
+            this.exportButton.TabIndex = 6;
+            this.exportButton.Text = "Export";
+            this.exportButton.UseVisualStyleBackColor = true;
             // 
             // importButton
             // 
-            this.importButton.Location = new System.Drawing.Point(0, 239);
+            this.importButton.Location = new System.Drawing.Point(0, 268);
             this.importButton.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(105, 23);
@@ -85,12 +94,23 @@
             this.importButton.Text = "Import";
             this.importButton.UseVisualStyleBackColor = true;
             // 
+            // selectImage
+            // 
+            this.selectImage.Location = new System.Drawing.Point(0, 185);
+            this.selectImage.Margin = new System.Windows.Forms.Padding(0, 20, 0, 40);
+            this.selectImage.Name = "selectImage";
+            this.selectImage.Size = new System.Drawing.Size(105, 23);
+            this.selectImage.TabIndex = 7;
+            this.selectImage.Text = "Select Image";
+            this.selectImage.UseVisualStyleBackColor = true;
+            this.selectImage.Click += new System.EventHandler(this.selectImage_Click);
+            // 
             // methodBox
             // 
             this.methodBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.methodBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.methodBox.FormattingEnabled = true;
-            this.methodBox.Location = new System.Drawing.Point(0, 198);
+            this.methodBox.Location = new System.Drawing.Point(0, 144);
             this.methodBox.Margin = new System.Windows.Forms.Padding(0);
             this.methodBox.Name = "methodBox";
             this.methodBox.Size = new System.Drawing.Size(105, 21);
@@ -99,37 +119,82 @@
             // methodLabel
             // 
             this.methodLabel.AutoSize = true;
-            this.methodLabel.Location = new System.Drawing.Point(0, 185);
+            this.methodLabel.Location = new System.Drawing.Point(0, 131);
             this.methodLabel.Margin = new System.Windows.Forms.Padding(0);
             this.methodLabel.Name = "methodLabel";
             this.methodLabel.Size = new System.Drawing.Size(43, 13);
             this.methodLabel.TabIndex = 4;
             this.methodLabel.Text = "Method";
             // 
+            // selectImageDialog
+            // 
+            this.selectImageDialog.Filter = "Image Files|*.png;*.bmp";
+            this.selectImageDialog.RestoreDirectory = true;
+            this.selectImageDialog.Title = "Select Image";
+            // 
+            // layoutPanel2
+            // 
+            this.layoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutPanel2.Controls.Add(this.zoomControl);
+            this.layoutPanel2.Controls.Add(this.zoomLabel);
+            this.layoutPanel2.Location = new System.Drawing.Point(12, 337);
+            this.layoutPanel2.Name = "layoutPanel2";
+            this.layoutPanel2.Size = new System.Drawing.Size(501, 48);
+            this.layoutPanel2.TabIndex = 4;
+            // 
+            // zoomControl
+            // 
+            this.zoomControl.Location = new System.Drawing.Point(3, 3);
+            this.zoomControl.Name = "zoomControl";
+            this.zoomControl.Size = new System.Drawing.Size(104, 45);
+            this.zoomControl.TabIndex = 0;
+            this.zoomControl.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.zoomControl.Value = 5;
+            // 
+            // zoomLabel
+            // 
+            this.zoomLabel.Location = new System.Drawing.Point(113, 0);
+            this.zoomLabel.Name = "zoomLabel";
+            this.zoomLabel.Size = new System.Drawing.Size(56, 45);
+            this.zoomLabel.TabIndex = 1;
+            this.zoomLabel.Text = "100%";
+            this.zoomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 314);
+            this.ClientSize = new System.Drawing.Size(525, 397);
+            this.Controls.Add(this.layoutPanel2);
             this.Controls.Add(this.layoutPanel);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.imageBox);
             this.Name = "MainWindow";
             this.Text = "StegaDemo";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.MainWindow_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
             this.layoutPanel.ResumeLayout(false);
             this.layoutPanel.PerformLayout();
+            this.layoutPanel2.ResumeLayout(false);
+            this.layoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomControl)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imageBox;
         private System.Windows.Forms.FlowLayoutPanel layoutPanel;
         private System.Windows.Forms.Label methodLabel;
         private System.Windows.Forms.ComboBox methodBox;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.Button importButton;
+        private System.Windows.Forms.Button selectImage;
+        private System.Windows.Forms.OpenFileDialog selectImageDialog;
+        private System.Windows.Forms.FlowLayoutPanel layoutPanel2;
+        private System.Windows.Forms.TrackBar zoomControl;
+        private System.Windows.Forms.Label zoomLabel;
     }
 }
 
